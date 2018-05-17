@@ -1,0 +1,35 @@
+#!/bin/bash
+#
+# Este script converte uma imagem png para ppm
+# 
+# Gabriel Marques - gabrielm@lncc.br
+#
+# Sex Mai  6 12:57:29 BRT 2011
+#
+ 
+
+# Programas necessarios: pngtools netpbm
+# Se precisar reduzir a paleta para 224:
+# 	Comandos: pngtopnm seu_logo.png | ppmquant -fs 223 | pnmtoplainpnm > logo_linux_clut224.ppm
+
+# Se nao for root, nem comece ... 
+if [ "$(id -u)" -ne "0" ]; then
+    echo "Voce precisa ser root"
+    exit 201
+fi
+
+if [ $# -lt 1 ]; then
+	echo -e "Uso: $0 <seu_logo.png>"
+	exit 202
+fi
+
+if [ ! -f "$1" ]; then
+	echo -e "Arquivo nao encontrado: $1"
+	exit 203
+else
+	logo_png="$1"
+	logo_file=${1%%.*}
+	#pngtopnm "$logo_png" | ppmquant -fs 223 | pnmtoplainpnm > ${logo_file}.ppm
+	pngtopnm "$logo_png" | pnmtoplainpnm > ${logo_file}.ppm
+fi
+

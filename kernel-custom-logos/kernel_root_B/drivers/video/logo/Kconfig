@@ -1,0 +1,169 @@
+#
+# Logo configuration
+#
+
+menuconfig LOGO
+	bool "Bootup logo"
+	depends on FB || SGI_NEWPORT_CONSOLE
+	help
+	  Enable and select frame buffer bootup logos.
+
+if LOGO
+
+config FB_LOGO_EXTRA
+	bool
+	depends on FB=y
+	default y if SPU_BASE
+
+config LOGO_LINUX_MONO
+	bool "Standard black and white Linux logo"
+	default n
+
+config LOGO_LINUX_VGA16
+	bool "Standard 16-color Linux logo"
+	default n
+
+config LOGO_LINUX_CLUT224
+	bool "Standard 224-color Linux logo"
+	default n
+
+# Custom logos by Gabriel Marques - snortt@gmail.com 
+menu "Custom Logo"
+config LOGO_DEBIAN_BALL_BLACK_CLUT224
+	bool "Black ball with Debian logo (224-color)"
+	default n
+
+config LOGO_DEBIAN_BALL_CLUT224
+	bool "Ball with Debian logo (224-color)"
+	default n
+
+config LOGO_DEBIAN_LOGO_BLUE_CLUT224
+	bool "Blue Debian swirl (224-color)"
+	default n
+
+config LOGO_DEBIAN_LOGO_CLUT224
+	bool "Default Debian Swirl (224-color)"
+	default n
+
+config LOGO_LINUS_CLUT224
+	bool "Linus portrait: Our creator :-) (224-color)"
+	default n
+
+config LOGO_LNCC_CLUT224
+	bool "LNCC Logo (224-color)"
+	default n
+
+config LOGO_POWERED_DEBIAN_CLUT224
+	bool "Powered by Debian Logo (224-color)"
+	default n
+
+config LOGO_POWERED_LINUX_CLUT224
+	bool "Powered by Linux Logo (224-color)"
+	default n
+
+config LOGO_SONIC_CLUT224
+	bool "Sonic the hedgehog (224-color)"
+	default n
+
+config LOGO_TUX_ANGUS_CLUT224
+	bool "Tux plays AC/DC (224-color)"
+	default n
+
+config LOGO_BORN_TO_FRAG_CLUT224
+	bool "Tux is born to frag (224-color)"
+	default n
+
+config LOGO_TUX_DOOM_CLUT224
+	bool "Tux plays Doom (224-color)"
+	default n
+
+config LOGO_TUX_DREDD_CLUT224
+	bool "Tux plays Judge Dredd (224-color)"
+	default n
+
+config LOGO_TUX_METAL_CLUT224
+	bool "Tux plays metal (224-color)"
+	default n
+
+config LOGO_TUX_NEO_CLUT224
+	bool "Tux Neo enters the Matrix (224-color)"
+	default n
+
+config LOGO_TUX_FIRE_CLUT224
+	bool "Tux is on fire (224-color)"
+	default y
+
+config LOGO_TUX_SLASH_CLUT224
+	bool "Tux plays Slash (224-color)"
+	default n
+
+config LOGO_TUX_X_LINUX_CLUT224
+	bool "Nice chrome X with Tux inside (224-color)"
+	default n
+
+config LOGO_TUX_YODA_CLUT224
+	bool "Tux Yoda uses the force (224-color)"
+	default n
+
+config LOGO_TUX_ZOMBIE_CLUT224
+	bool "Tux zombie eats brains (224-color)"
+	default n
+endmenu
+# Custom logos - END
+
+config LOGO_BLACKFIN_VGA16
+	bool "16-colour Blackfin Processor Linux logo"
+	depends on BLACKFIN
+	default y
+
+config LOGO_BLACKFIN_CLUT224
+	bool "224-colour Blackfin Processor Linux logo"
+	depends on BLACKFIN
+	default y
+
+config LOGO_DEC_CLUT224
+	bool "224-color Digital Equipment Corporation Linux logo"
+	depends on MACH_DECSTATION || ALPHA
+	default y
+
+config LOGO_MAC_CLUT224
+	bool "224-color Macintosh Linux logo"
+	depends on MAC
+	default y
+
+config LOGO_PARISC_CLUT224
+	bool "224-color PA-RISC Linux logo"
+	depends on PARISC
+	default y
+
+config LOGO_SGI_CLUT224
+	bool "224-color SGI Linux logo"
+	depends on SGI_IP22 || SGI_IP27 || SGI_IP32 || X86_VISWS
+	default y
+
+config LOGO_SUN_CLUT224
+	bool "224-color Sun Linux logo"
+	depends on SPARC
+	default y
+
+config LOGO_SUPERH_MONO
+	bool "Black and white SuperH Linux logo"
+	depends on SUPERH
+	default y
+
+config LOGO_SUPERH_VGA16
+	bool "16-color SuperH Linux logo"
+	depends on SUPERH
+	default y
+
+config LOGO_SUPERH_CLUT224
+	bool "224-color SuperH Linux logo"
+	depends on SUPERH
+	default y
+
+config LOGO_M32R_CLUT224
+	bool "224-color M32R Linux logo"
+	depends on M32R
+	default y
+
+endif # LOGO
